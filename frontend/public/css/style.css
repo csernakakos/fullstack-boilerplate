@@ -1,0 +1,302 @@
+:root {
+    --brand: rgb(189, 66, 233);
+    --dark: rgb(52, 41, 77);
+    --active: rgb(203, 125, 231);
+    --mainFont: "Noto Sans", Arial;
+    --h1Font: "Playfair Display", "Times New Roman";
+    --mainFontText: rgb(227, 239, 245);
+    --secondaryFontText: rgb(190, 185, 197);
+
+
+    --accent: rgb(255, 252, 47);
+    --h1: rgb(209, 183, 255);
+
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+    background: var(--dark);
+    font-family: var(--mainFont);
+    color: var(--mainFontText);
+    font-weight: normal;
+    font-size: 2.4rem;
+    margin: 0 auto;
+    transition: 0.2s all;
+}
+
+.container {
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 4rem;
+    max-width: 65rem;
+}
+
+h1 {
+    font-family: var(--h1Font);
+    font-size: 7.4rem;
+    color: var(--h1);
+    margin-bottom: 7rem;
+}
+
+h1 > span {
+    color: var(--accent);
+}
+
+h2 {
+    font-weight: lighter;
+    margin-bottom: 1.7rem;
+}
+
+span.highlight {
+    font-weight: 600;
+}
+
+/*NAVIGATION MENU*/
+.menu {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+}
+
+.menu a,
+a.new-message {
+    color: var(--brand);
+    text-decoration: none;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    transition: 0.2s ease-in-out;
+    
+}
+
+/* a.new-message#main-action {
+    background: var(--accent);
+    font-size: 2.2rem;
+    display: inline-block;
+    font-weight: bolder;
+    color: var(--dark);
+    padding: 1rem 2rem;
+    border-radius: 6px;
+    transition: 0.2s ease-in-out;
+    box-shadow: 0 10px 20px hsla(0,0%,0%,0.15), 0 3px 6px hsla(0,0%,0%,0.1);
+    text-transform: uppercase;
+}
+
+a.new-message#main-action:hover {
+    background: rgb(198, 196, 34);
+} */
+
+.menu a:hover,
+a.new-message:hover,
+.menu a:active,
+a.new-message:active,
+.menu a:focus,
+a.new-message:focus {
+    color: var(--accent);
+}
+
+a.new-message {
+    display: block;
+    margin-top: 1rem;
+}
+
+.emptyState > a.new-message {
+    display: inline-block;
+    margin: initial;
+    padding: initial;
+}
+
+.menu .selected {
+    color: var(--accent);
+    /* text-decoration: underline; */
+}
+
+/*FORM*/
+.form {
+    margin-top: 1.8rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.form.delete {
+    margin-top: initial;
+}
+
+.form > input,
+.form > textarea,
+.form a.button,
+#main-action {
+    font-size: 2.2rem;
+    width: 80%;
+    padding: 1.3rem 1rem;
+    margin: 0.9rem auto;
+    border: none;
+    border-radius: 4px;
+}
+
+.form button {
+    background: inherit;
+    border: none;
+    margin-top: 1.2rem;
+}
+
+.form a.button,
+#main-action {
+    display: block;
+    color: var(--mainFontText);
+    cursor: pointer;
+    background: var(--brand);
+    transition: 0.2s ease-in-out;
+    max-width: 50%;
+    text-transform: uppercase;
+    font-weight: bolder;
+}
+
+#main-action:hover {
+    background: rgb(147, 38, 186);
+}
+
+.form a.button.enabled:hover {
+    background: var(--active);
+}
+
+a.button.disabled {
+    opacity: 1;
+    opacity: 0.2;
+    cursor: not-allowed;
+}
+
+.form > input::placeholder,
+.form > textarea {
+    font-family: var(--mainFont);
+    color: #2c2b2f;
+    /* font-weight: lighter; */
+}
+
+.form > textarea {
+    min-height: 24rem;
+}
+
+/* ERRRORS */
+p.error {
+    color: #dd4a4a;
+    font-weight: bold;
+    font-size: 2rem;
+    margin: 0 auto;
+    max-width: 30rem;
+}
+
+/* MESSAGES */
+.messages {
+	margin-top: 4rem;
+	margin-bottom: 2.4rem;
+    /* box-shadow: 0 10px 20px hsla(0,0%,0%,0.15), 0 3px 6px hsla(0,0%,0%,0.1);
+	background: rgb(37, 28, 57); */
+	border-radius: 6px;
+	padding: 1.6rem;
+	text-align: left;
+    min-height: 8rem;
+}
+
+.message {
+    border: 2px solid rgba(96, 74, 135, 0.2);
+    box-shadow: 0 10px 20px hsla(0,0%,0%,0.15), 0 3px 6px hsla(0,0%,0%,0.1);
+    background: rgba(61, 47, 87, 0.2);
+    background: rgba(130, 96, 193, 0.2);
+    border-radius: 6px;
+    padding: 2rem;
+    margin-bottom: 1.6rem;
+}
+
+.message .title {
+    font-size: 3rem;
+    font-family: var(--h1Font);
+    letter-spacing: 0.5px;
+    margin-bottom: 1rem;
+}
+
+.message .timestamp {
+    margin-top: 1.2rem;
+}
+
+.message .createdBy {
+    margin-bottom: 2.4rem;
+}
+
+.message .timestamp,
+.message .createdBy {
+    font-size: 1.8rem;
+    font-weight: normal;
+    color: var(--secondaryFontText);
+}
+
+.message .createdBy span {
+    font-family: var(--h1Font);
+    color: var(--accent);
+    letter-spacing: 0.9px;
+}
+
+.message .body {
+    margin-top: 1rem;
+    margin-bottom: 1.4rem;
+    font-size: 2rem;
+    line-height: 1.7;
+}
+
+.form button.delete {
+    text-align: left;
+    width: initial;
+    margin-bottom: 1.4rem;
+}
+
+.form a.button.delete {
+	background: none;
+	width: initial;
+	padding: 0.8rem 1.8rem;
+	margin: 0;
+	text-transform: uppercase;
+	font-size: 1.5rem;
+	color: #dd4a4a;
+	/* font-weight: bold; */
+	display: inline-block;
+    border: 1px solid #dd4a4a;
+	text-align: left;
+}
+
+.form a.button.delete:hover {
+    background: #5c0e19;
+}
+
+.emptyState {
+    text-align: center;
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+    color: rgb(142, 136, 150);
+}
+
+/* isAdmin */
+.isAdmin {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.2rem;
+}
+
+.isAdmin .checkbox {
+    margin-left: 1rem;
+    cursor: pointer;
+}
+
+
+@media only screen and (max-width: 400px) {
+    html {
+        font-size: 44.5%;
+    }
+}

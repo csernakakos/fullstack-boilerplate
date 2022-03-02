@@ -1,0 +1,19 @@
+extends base
+
+block content
+    h2 What's on your mind?
+
+    if isLoggedIn
+        p 
+            span.highlight #{username}
+            | , this is your space to post messages.
+
+        form.form(action="" method="POST")
+          input(type="text" name="title" placeholder="title of message")
+          textarea(type="text" name="body" placeholder="body of message")
+          if error
+            p.error= error
+          button
+            a.button.disabled Post
+    else
+        p You are not logged in, so you cannot post messages.

@@ -1,0 +1,33 @@
+doctype html
+html(lang='en')
+  head
+    title= title
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(href='https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap' rel='stylesheet')
+    link(href='https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap' rel='stylesheet')    
+    link(rel='stylesheet', href="/css/style.css")
+
+  body
+    div(class='nav container')
+      block nav
+        nav
+          ul(class='menu')
+            li 
+              a(href='/home') Home
+            if isLoggedIn !== true
+              li 
+                a(href='/log-in') Log in
+            if isLoggedIn === true
+              li 
+                a(href='/log-out') Log out
+            if isLoggedIn !== true
+              li 
+                a(href='/sign-up') Sign up
+            if isLoggedIn
+              li 
+                a(href='/new-message') Post a message
+    div(class='body container')
+      h1 Clubhouse<span>.</span>
+      block content
+    script(src='/script/script.js')

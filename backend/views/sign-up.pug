@@ -1,0 +1,29 @@
+extends base
+
+block content
+    h2 Sign up
+
+    form.form(action="" method="POST")
+        input(type="text" name="username" placeholder="user name")
+        //- if errors
+            //- p.error= errors.firstName.msg
+        
+        input(type="text" name="email" placeholder="email")
+        //- if errors
+            p.error= errors.email.msg
+      
+        input(type="password", name="password" placeholder="password")
+        //- if errors
+            p.error= errors.password.msg
+
+        input(type="password", name="passwordConfirmation" placeholder="repeat password")
+        //- if errors
+            p.error= errors.passwordConfirmation.msg
+
+        if error
+            p.error= error
+        div.isAdmin
+            label(for="isAdmin" name="isAdmin" value="Are you an admin?") Are you an admin?
+            input.checkbox(type="checkbox", name="isAdmin")
+        button
+            a.button.disabled Sign up

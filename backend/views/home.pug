@@ -1,0 +1,44 @@
+extends base
+
+block content
+    h2
+        | Welcome
+        if isLoggedIn
+            span.highlight , #{username}
+        | !
+
+    if isLoggedIn
+        p 
+        a.new-message#main-action(href="/new-message") Post a message 
+    else
+        p Log in to post messages.
+    
+    if error
+        p.error= error
+    div.messages
+        if messages.length
+            each message in messages
+                div.message
+                    if isAdmin
+                        form.form.delete(action=`/messages/${message._id}` method="POST")
+                            button.delete
+                                a.button.delete Delete
+                    h3.title #{message.title}
+                    if membershipStatus === "privilegedUser"
+                        h4.timestamp 
+                            | Posted on 
+                            = message.createdAt.toLocaleString("en-us", {year: "numeric", month: "long", day: "numeric"})
+                            | .
+                        if message.createdBy
+                            h4.createdBy
+                                | Posted by 
+                                span.createdBy= message.createdBy.username
+                    p.body #{message.body}
+        if !messages.length && isLoggedIn
+            p.emptyState 
+                | It's quiet in here. Why not 
+                a.new-message(href="/new-message") post a message 
+                | ?
+        if !messages.length && !isLoggedIn
+            p.emptyState Sign up or log in to start posting messages.
+    
